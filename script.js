@@ -7,4 +7,14 @@ $(document).ready(function () {
     // append date to current day div
     currentDay.append(date);
 
+    // save button event listener
+    $(".saveBtn").on("click", function () {
+        //time equals saveButton id
+        let time = $(this).attr('id');
+        //value equals text entered into the textarea
+        const value = $(this).siblings('textarea').val()
+        //sets time and value in localStorage
+        localStorage.setItem(time, value);
+    });
+
 })
