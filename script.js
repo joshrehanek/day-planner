@@ -23,4 +23,21 @@ $(document).ready(function () {
         localStorage.setItem(time, value);
     });
 
+
+    const currentHour = moment().hour()
+    for (loop) {
+        let tempTime =
+        if ()
+          //read pressent time
+    //     if (present > timeBlockHour) {
+    //         change time-block to gray (.past)
+    //     } else if (present === timeBlockHour) {
+    //         change time block to red (.present)
+    //     } else {
+    //         time-block remains green (.future)
+    //     }
+    // }
+    }
+    console.log(`currentHour: ${currentHour}`)
+
 })
