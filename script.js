@@ -7,6 +7,12 @@ $(document).ready(function () {
     // append date to current day div
     currentDay.append(date);
 
+        //populates textarea with localStorage 
+        for (let i = 9; i <= 17; i++) {
+            $(`#${i}`).siblings('textarea').val(localStorage.getItem(i));
+        }
+    
+
     // save button event listener
     $(".saveBtn").on("click", function () {
         //time equals saveButton id
