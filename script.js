@@ -1,5 +1,6 @@
 $(document).ready(function () {
-
+//variable to get current hour and convert to number
+    const currentHour = parseInt(moment().hour())
     //grabs currentDay div from HTML
     let currentDay = $("#currentDay");
     //todays date using moment.js
@@ -7,12 +8,10 @@ $(document).ready(function () {
     // append date to current day div
     currentDay.append(date);
 
-        //populates textarea with localStorage 
-        for (let i = 9; i <= 17; i++) {
-            $(`#${i}`).siblings('textarea').val(localStorage.getItem(i));
-        }
-    
-
+    //populates textarea with localStorage 
+    for (let i = 9; i <= 17; i++) {
+        $(`#${i}`).siblings('textarea').val(localStorage.getItem(i));
+    }
     // save button event listener
     $(".saveBtn").on("click", function () {
         //time equals saveButton id
@@ -23,21 +22,24 @@ $(document).ready(function () {
         localStorage.setItem(time, value);
     });
 
+    $.each($('.time-block'), function (index, value) {
+        let tempTime = parseInt($(value).attr('data-time'));
+        console.log(tempTime);
+        if (currentHour === tempTime) {
+            $(this).find('textarea').addClass('present');
+        } else if (currentHour < tempTime) {
+            $(this).find('textarea').addClass('future');
+        } else {
+            $(this).find('textarea').addClass('past').attr('disabled', 'disabled');
+            $(this).find('saveBtn').addClass('disabled').attr('disabled', 'true');
+        }
+    });
 
-    const currentHour = moment().hour()
-    for (loop) {
-        let tempTime =
-        if ()
-          //read pressent time
-    //     if (present > timeBlockHour) {
-    //         change time-block to gray (.past)
-    //     } else if (present === timeBlockHour) {
-    //         change time block to red (.present)
-    //     } else {
-    //         time-block remains green (.future)
-    //     }
-    // }
-    }
-    console.log(`currentHour: ${currentHour}`)
+    //clear button
+    $("#clear").on("click", function () {
+        console.log('clicked');
+        localStorage.clear();
+        location.reload();
 
-})
+    });
+});
