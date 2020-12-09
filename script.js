@@ -1,10 +1,10 @@
-$(document).ready(function () {
-//variable to get current hour and convert to number
+$(document).ready(function () {                          
+    //variable to get current hour and convert to number
     const currentHour = parseInt(moment().hour())
     //grabs currentDay div from HTML
     let currentDay = $("#currentDay");
     //todays date using moment.js
-    let date = moment().format('MMMM Do YYYY');
+    let date = moment().format('MMMM Do YYYY');                   
     // append date to current day div
     currentDay.append(date);
 
@@ -22,24 +22,23 @@ $(document).ready(function () {
         localStorage.setItem(time, value);
     });
 
-    $.each($('.time-block'), function (index, value) {
-        let tempTime = parseInt($(value).attr('data-time'));
-        console.log(tempTime);
-        if (currentHour === tempTime) {
-            $(this).find('textarea').addClass('present');
-        } else if (currentHour < tempTime) {
-            $(this).find('textarea').addClass('future');
+
+    for (let i = 9; i <= 17; i++) {
+        const currentHour = moment().hour();
+        if (currentHour === i) {
+            $('textarea').addClass('present');
+        } else if (currentHour > i) {
+            $('textarea').addClass('past');
         } else {
-            $(this).find('textarea').addClass('past').attr('disabled', 'disabled');
-            $(this).find('saveBtn').addClass('disabled').attr('disabled', 'true');
+            $('textarea').addClass('future')
         }
-    });
 
-    //clear button
-    $("#clear").on("click", function () {
-        console.log('clicked');
-        localStorage.clear();
-        location.reload();
+        //clear button
+        $("#clear").on("click", function () {
+            console.log('clicked');
+            localStorage.clear();
+            location.reload();
 
-    });
-});
+        })
+    }
+})
