@@ -1,6 +1,5 @@
 $(document).ready(function () {                          
-    //variable to get current hour and convert to number
-    const currentHour = parseInt(moment().hour())
+  
     //grabs currentDay div from HTML
     let currentDay = $("#currentDay");
     //todays date using moment.js
@@ -23,14 +22,19 @@ $(document).ready(function () {
     });
 
 
-    for (let i = 9; i <= 17; i++) {
-        const currentHour = moment().hour();
-        if (currentHour === i) {
-            $('textarea').addClass('present');
-        } else if (currentHour > i) {
+    for (let i = 12; i <= 20 ; i++) {
+        let currentHour = moment().hour();
+        console.log(currentHour);
+        console.log(i);
+        if (currentHour > i) {
             $('textarea').addClass('past');
+        } else if (currentHour < i) {
+            $('textarea').removeClass('past')
+            $('textarea').addClass('future');
         } else {
-            $('textarea').addClass('future')
+            $('textarea').removeClass('past')
+            $('textarea').removeClass('future')
+            $('textarea').addClass('present')
         }
 
         //clear button
