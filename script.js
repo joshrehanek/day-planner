@@ -1,5 +1,8 @@
-$(document).ready(function () {                          
-  
+$(document).ready(function () {    
+    //iterable variable
+    let iter = 8;       
+    //current hour using moment.js
+    let currentHour = moment().hour();
     //grabs currentDay div from HTML
     let currentDay = $("#currentDay");
     //todays date using moment.js
@@ -22,13 +25,12 @@ $(document).ready(function () {
     });
 
 
-    for (let i = 12; i <= 20 ; i++) {
-        let currentHour = moment().hour();
-        console.log(currentHour);
-        console.log(i);
-        if (currentHour > i) {
+
+    $(".time-block").each(function() {
+        console.log($(this))
+        if (currentHour > iter) {
             $('textarea').addClass('past');
-        } else if (currentHour < i) {
+        } else if (currentHour < iter) {
             $('textarea').removeClass('past')
             $('textarea').addClass('future');
         } else {
@@ -36,6 +38,11 @@ $(document).ready(function () {
             $('textarea').removeClass('future')
             $('textarea').addClass('present')
         }
+        iter++;   
+        console.log(currentHour);
+        console.log(iter);
+        });
+    
 
         //clear button
         $("#clear").on("click", function () {
@@ -44,5 +51,5 @@ $(document).ready(function () {
             location.reload();
 
         })
-    }
-})
+    })
+
