@@ -29,13 +29,15 @@ $(document).ready(function () {
         var timeBlock = parseInt($(this).children('button').attr('id'));
         if (currentHour > timeBlock) {
             $(this).addClass('past');
-        } else if (currentHour < timeBlock) {
-            $('this').addClass('future');
+            console.log('past');
+        } else if (currentHour === timeBlock) {
+            $(this).removeClass('past')
+            $(this).addClass('present');
         } else {
-            $('this').addClass('present')
+            $(this).removeClass('past')
+            $(this).removeClass('present')
+            $(this).addClass('future')
         }
-        console.log(currentHour);
-        console.log(timeBlock);
     });
 
 

@@ -32,7 +32,7 @@ THEN the saved events persist
 - https://joshrehanek.github.io/day-planner/
 
 ## Day Planner Image
-![Day Planner](./assets/images/day-planner.png)
+![Day Planner](./assets/images/day-planner-full.png)
 
 ## Technologies
 - [HTML](https://html.com/)
